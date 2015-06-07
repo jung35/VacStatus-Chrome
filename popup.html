@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>VacStatus Chrome Extension</h1>
-    <div class="settings-container" id="settings-container">
+    <div class="settings-container" id="settings">
         <div class="warning" id="finish-configure-message"></div>
         <h2>Settings</h2>
 
@@ -27,25 +27,30 @@
     </div>
 
     <div class="main-container" id="main">
-        <div class="fetch-container" id="fetch-container">
-            <button id="fetch-coplay">Grab recently played users</button>
+        <div class="fetch-coplay-container" id="fetch-coplay">
+            <button id="getCoplayMatches">Grab recently played users</button>
             <div class="warning text-center">This will only work if you are logged into steam.</div>
         </div>
-        <ul class="links">
-            <li>
-                <a href="https://github.com/jung3o/addtovacstatus" class="github" target="_blank"></a>
-            </li>
-            <li>
-                <a href="#" class="settings" id="editSettings"></a>
-            </li>
-        </ul>
-        <div class="clear"></div>
+        <div class="matches-container" id="matches">
+            
+        </div>
     </div>
 
     <div id="loading" class="spinner">
         <div class="double-bounce1"></div>
         <div class="double-bounce2"></div>
     </div>
+
+    <ul class="links" id="links">
+        <li>
+            <a href="https://github.com/jung3o/VacStatus-Chrome" class="github" target="_blank"></a>
+        </li>
+        <li>
+            <a href="#" class="settings" id="editSettings"></a>
+        </li>
+        <li class="clear"></li>
+    </ul>
+
     <script src="/js/popup/helpers.js"></script>
     <script src="/js/popup/settings.js"></script>
     <script src="/js/popup/coplay.js"></script>

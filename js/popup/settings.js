@@ -26,9 +26,7 @@ function doSaveListId()
     listId = listElement.options[listElement.selectedIndex].value;
 
     chrome.storage.sync.set({ list_id: listId }, function () {
-        hideElement('settings-container');
-        hideElement('selectList-form');
-        showElement('main');
+        hideSettings();
     });
 }
 
@@ -91,9 +89,11 @@ function fetchCustomList(privateKey, listId)
 
 function showSettings(canCancel)
 {
-    showElement('settings-container');
+    showElement('settings');
     showElement('privateKey-form');
+
     hideElement('main');
+    hideElement('links');
 
     if(canCancel) showElement('cancelSettings', 'inline-block');
 }
@@ -101,7 +101,11 @@ function showSettings(canCancel)
 function hideSettings()
 {
     showElement('main');
-    hideElement('settings-container');
+    showElement('links');
+
+    hideElement('settings');
+    hideElement('privateKey-form');
+    hideElement('selectList-form');
     hideElement('cancelSettings');
 }
 
@@ -124,6 +128,7 @@ function loadSaved()
             showSettings(false);
         } else {
             hideSettings();
+            fetchMatches();
         }
 
         if(privateKey != undefined) document.getElementById('private_key').value = privateKey;

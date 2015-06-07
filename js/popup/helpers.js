@@ -15,8 +15,8 @@ function showLoading(visible)
 function showElement(elementId, display)
 {
     var element = document.getElementById(elementId);
-
-    if(display == undefined) display = 'block';
+    
+    if(typeof display != 'string') display = 'block';
     element.style.display = display;
 }
 

@@ -1,6 +1,5 @@
 body {
-	width: 250px;
-	padding: 0 5px;
+	width: 300px;
 	color: #424242;
 	background: #fff;
 }
@@ -27,7 +26,11 @@ h2 {
 	margin: 0 0 10px;
 }
 
-.fetch-container button {
+.fetch-coplay-container {
+	margin: 15px 0;
+}
+
+.fetch-coplay-container button {
 	background: #4CAF50;
 	border: 0;
 	border-radius: 5px;
@@ -41,8 +44,8 @@ h2 {
 	margin: 15px 0 0;
 }
 
-.fetch-container button:hover,
-.fetch-container button:hover {
+.fetch-coplay-container button:hover,
+.fetch-coplay-container button:hover {
 	background: #43A047;
 }
 
@@ -168,7 +171,7 @@ h2 {
 }
 
 ul.links {
-	margin: 15px 0 0;
+	margin: 0;
 	padding: 0;
 	list-style: none;
 	text-align: center;
@@ -176,7 +179,7 @@ ul.links {
 }
 
 
-ul.links li {
+ul.links li:not(.clear) {
 	float: left;
 	width: 50%;
 	height: 60px;
@@ -200,3 +203,53 @@ ul.links li a:hover {
 ul.links .github { background: url(/img/github.png) no-repeat center; }
 
 ul.links .settings { background: url(/img/cog.png) no-repeat center; }
+
+.matches-container {
+	margin: 15px -8px 0;
+	background: #fafafa;
+	border-top: 1px solid #ddd;
+	/*border-bottom: 1px solid #ddd;*/
+	padding: 15px;
+	max-height: 250px;
+	overflow-y: auto;
+}
+
+.match-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #fff;
+	padding: 0 15px;
+	height: 60px;
+	margin-bottom: 5px;
+	cursor: pointer;
+	border: 1px solid #e1e1e1;
+}
+
+.match-item .title {
+	font-size: 14px;
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.match-item .time {
+	font-size: 12px;
+	font-weight: normal;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.match-item .player-count {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 40px;
+	height: 40px;
+	background: #424242;
+	border-radius: 20px;
+	font-weight: bold;
+	color: #eee;
+}

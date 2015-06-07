@@ -6,7 +6,7 @@
 
   "icons": { "16": "img/vs16.png", "48": "img/vs48.png", "128": "img/vs128.png" },
 
-  "permissions": [ "storage", "*://vacstat.us/*" ],
+  "permissions": [ "storage", "*://vacstat.us/*", "*://steamcommunity.com/*" ],
 
   "content_scripts" : [{
     "js": [ "js/addtovac.js" ],
