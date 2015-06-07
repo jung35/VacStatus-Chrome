@@ -51,12 +51,13 @@ function fetchCustomList(privateKey, listId)
 {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "https://vacstat.us/api/v1/list?_key=" + privateKey);
-    xhr.onreadystatechange = function () {
-        var myList;
+    xhr.onreadystatechange = function ()
+    {
+        var myList, data, listOption;
 
         if (xhr.readyState != 4) return;
 
-        var data = JSON.parse(xhr.responseText);
+        data = JSON.parse(xhr.responseText);
         if (data.error)
         {
             showLoading(false);
@@ -71,7 +72,7 @@ function fetchCustomList(privateKey, listId)
         removeOptions(document.getElementById("select_list"));
 
         myList.forEach(function (item) {
-            var listOption = document.createElement('option');
+            listOption = document.createElement('option');
 
             listOption.value = item.id;
             listOption.textContent = item.title;
@@ -94,10 +95,7 @@ function showSettings(canCancel)
     showElement('privateKey-form');
     hideElement('main');
 
-    if(canCancel)
-    {
-        showElement('cancelSettings', 'inline-block');
-    }
+    if(canCancel) showElement('cancelSettings', 'inline-block');
 }
 
 function hideSettings()
