@@ -2,6 +2,7 @@ body {
 	width: 300px;
 	color: #424242;
 	background: #fff;
+	margin: 8px 8px 0;
 }
 
 .clear{
@@ -185,7 +186,7 @@ ul.links {
 ul.links li:not(.clear) {
 	float: left;
 	width: 50%;
-	height: 40px;
+	height: 50px;
 }
 
 ul.links li:first-child {
@@ -212,7 +213,7 @@ ul.links .settings { background: url(/img/cog.png) no-repeat center; }
 	margin: 15px -8px 0;
 	background: #fafafa;
 	border-top: 1px solid #ddd;
-	padding: 15px;
+	padding: 15px 10px 10px;
 	max-height: 300px;
 	overflow-y: auto;
 }
@@ -270,10 +271,10 @@ ul.links .settings { background: url(/img/cog.png) no-repeat center; }
 
 .players-container {
 	display: none;
-	margin: -5px -8px 30px;
+	margin: -5px -8px 0;
 	background: #fafafa;
-	padding: 15px;
-	max-height: 350px;
+	padding: 15px 10px 10px;
+	max-height: 450px;
 	overflow-y: auto;
 	position: relative;
 }
@@ -282,15 +283,26 @@ ul.links .settings { background: url(/img/cog.png) no-repeat center; }
 	background: #4CAF50;
 	border: 1px solid #388E3C;
 	color: white;
-	position: fixed;
-	bottom: 49px;
-	left: 0;
-	right: 0;
-	width: 100%;
+	width: calc(100% - 10px);
+	margin: 10px auto 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 30px;
+}
+
+.players-container textarea {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	display: block;
+	width: calc(100% - 36px);
+	height: auto;
+	margin: 5px auto 10px;
+	padding: 6px 12px;
+	color: #555;
+	background: #fff;
+	border: 1px solid #e1e1e1;
+	resize: none;
 }
 
 .players-container h4 {
@@ -334,6 +346,10 @@ ul.links .settings { background: url(/img/cog.png) no-repeat center; }
 }
 
 .player-item .avatar {
+	min-width: 32px;
+	min-height: 32px;
+	max-width: 32px;
+	max-height: 32px;
 	width: 32px;
 	height: 32px;
 	margin-right: 10px;

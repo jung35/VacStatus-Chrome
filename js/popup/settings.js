@@ -8,7 +8,7 @@ function doSavePrivateKey()
         return;
     }
 
-    showLoading(true);
+    showLoading();
 
     hideElement('finish-configure-message');
     hideElement('privateKey-form');

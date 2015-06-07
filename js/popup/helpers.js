@@ -8,14 +8,14 @@ function showLoading(visible)
 {
     var loading = document.getElementById('loading');
 
-    if(visible) loading.style.display = "block";
-    else loading.style.display = "none";
+    if(visible === false) loading.style.display = "none";
+    else loading.style.display = "block";
 }
 
 function showElement(elementId, display)
 {
     var element = document.getElementById(elementId);
-    
+
     if(typeof display != 'string') display = 'block';
     element.style.display = display;
 }

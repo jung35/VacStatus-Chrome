@@ -3,7 +3,7 @@ var matches = [];
 function fetchCoplay(pageNumber)
 {
 	hideMain();
-	showLoading(true);
+	showLoading();
 
 	var url = "http://steamcommunity.com/my/friends/coplay";
 
@@ -136,10 +136,11 @@ function displayPlayers(thisMatch)
 	var playersElement, backButton, titleElement,
 		timeElement, playerCheckBox, playerElement,
 		playerAvatar, playerName, toggleButton,
-		addButton;
+		addButton, clear, listTextarea;
 
 	hideElement('fetch-coplay');
 	hideElement('matches');
+	hideElement('links');
 	showElement('players');
 
 	playersElement = document.getElementById('players');
@@ -157,12 +158,6 @@ function displayPlayers(thisMatch)
 	toggleButton.addEventListener('click', toggleSelect);
 	playersElement.appendChild(toggleButton);
 
-	addButton = document.createElement('button');
-	addButton.className = "btn btn-add-to-list";
-	addButton.innerHTML = "Add to list";
-	addButton.addEventListener('click', toggleSelect);
-	playersElement.appendChild(addButton);
-
 	titleElement = document.createElement('h4');
 	titleElement.className = "title";
 	titleElement.innerHTML = thisMatch.gameTitle;
@@ -173,13 +168,12 @@ function displayPlayers(thisMatch)
 	timeElement.innerHTML = thisMatch.gameTime;
 	playersElement.appendChild(timeElement);
 
-	console.log(thisMatch.players);
-
 	thisMatch.players.forEach(function(data, key) {
 		playerCheckBox = document.createElement('input');
 		playerCheckBox.className = "player-checkbox";
 		playerCheckBox.type = "checkbox";
 		playerCheckBox.id = "player_"+key;
+		playerCheckBox.setAttribute('data-steam', data.steam_id);
 		playersElement.appendChild(playerCheckBox);
 
 		playerElement = document.createElement('label');
@@ -197,12 +191,28 @@ function displayPlayers(thisMatch)
 		playerElement.appendChild(playerName);
 
 		playersElement.appendChild(playerElement);
-	})
+	});
+
+	clear = document.createElement('div');
+	clear.className = "clear";
+	playersElement.appendChild(clear);
+
+	listTextarea = document.createElement('textarea');
+	listTextarea.id = "listTextarea";
+	listTextarea.setAttribute('placeholder', 'A little description to help remember');
+	listTextarea.setAttribute('rows', 3);
+	playersElement.appendChild(listTextarea);
+
+	addButton = document.createElement('button');
+	addButton.className = "btn btn-add-to-list";
+	addButton.innerHTML = "Add to list";
+	addButton.addEventListener('click', sendToList);
+	playersElement.appendChild(addButton);
 }
 
 function toggleSelect()
 {
-	checkboxes = document.getElementsByClassName('player-checkbox');
+	var checkboxes = document.getElementsByClassName('player-checkbox');
 
 	var checked = checkboxes.item(0).checked == false;
 
@@ -212,10 +222,80 @@ function toggleSelect()
 	}
 }
 
+function sendToList()
+{
+	var checkboxes, description, steamId, search;
+	checkboxes = document.getElementsByClassName('player-checkbox');
+	description = document.getElementById('listTextarea').value;
+	steamId = [];
+
+	for(var i = 0; i < checkboxes.length; i++)
+	{
+		var checkbox = checkboxes.item(i);
+		if(checkbox.checked) steamId.push(checkbox.getAttribute('data-steam'));
+	}
+
+	if(steamId.length == 0) return;
+
+	search = steamId.join(',');
+
+	chrome.storage.sync.get(['private_key', 'list_id'], function (data) {
+		var privateKey, listId, url, xhr;
+
+		privateKey = data['private_key'];
+		listId = data['list_id'];
+
+		if(privateKey == undefined || listId == undefined) return;
+
+		hideMain();
+		showLoading();
+
+		url = "https://vacstat.us/api/v1/list/add/many";
+		url += "?_key=" + privateKey + "&list_id=" + listId;
+		url += "&search=" + search + "&description=" + description;
+
+		xhr = new XMLHttpRequest();
+		xhr.open("POST", url, true);
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState == 4) {
+				var resp = JSON.parse(xhr.responseText);
+				var opt;
+				
+				showElement('fetch-coplay');
+				showElement('matches');
+				showLoading(false);
+
+				if (!resp.error) {
+					opt = {
+						type: "basic",
+						iconUrl: "/img/vs128.png",
+						title: 'Players have been added',
+						message: 'The players you selected have successfully been added to the list'
+					};
+				} else {
+					opt = {
+						type: "basic",
+						iconUrl: "/img/vs128.png",
+						title: 'Players have not been added',
+						message: 'Something went wrong! Please check private key to see if you\'re using the correct one!'
+					};
+				}
+
+				chrome.notifications.create("", opt, function(id) {
+					console.error(chrome.runtime.lastError);
+				});
+			}
+		}
+		xhr.send();
+
+	});
+}
+
 function backToMatches()
 {
 	showElement('fetch-coplay');
 	showElement('matches');
+	showElement('links');
 	hideElement('players');
 }
 
