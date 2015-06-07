@@ -8,12 +8,6 @@
 
   "permissions": [ "storage", "notifications", "*://vacstat.us/*", "*://steamcommunity.com/*" ],
 
-  // "content_scripts" : [{
-  //   "js": [ "js/addtovac.js" ],
-  //   "run_at": "document_end",
-  //   "matches": [ "*://steamcommunity.com/id/*/friends/coplay/*" ]
-  // }],
-
   "browser_action": {
     "default_icon": {
       "19": "img/vs19.png",
