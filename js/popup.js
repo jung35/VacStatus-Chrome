@@ -1,3 +1,5 @@
+
+
 function save_options() {
     var customapikey = document.getElementById('customapikey').value;
     var vaclist = document.getElementById('vaclist');
@@ -87,24 +89,15 @@ function getLists(a) {
             }
         }
         xhr.send();
-
-
-
-
     });
-
-
 }
 
-function removeOptions(selectbox)
-{
-    var i;
-    for (i = selectbox.options.length - 1; i >= 0; i--)
-    {
-        selectbox.remove(i);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-        save_options);
+// var xhr = new XMLHttpRequest();
+// xhr.open("GET", "http://steamcommunity.com/id/my/friends/coplay");
+// xhr.onreadystatechange = function () {
+//     if (xhr.readyState == 4) {
+//         var parser = new DOMParser();
+//         console.log(parser.parseFromString(xhr.responseText, "text/html"));
+//     }
+// }
+// xhr.send();

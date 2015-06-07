@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VacStatus Private Key</title>
+    <link rel="stylesheet" href="/css/popup.css">
+</head>
+<body>
+    <h1>VacStatus Chrome Extension</h1>
+    <div class="settings-container" id="settings-container">
+        <div class="warning" id="finish-configure-message"></div>
+        <h2>Settings</h2>
+
+        <div class="privateKey-container" id="privateKey-form">
+            <label for="private_key">Private Key:</label> <a href="https://vacstat.us/settings" target="_blank">(Grab key here)</a>
+            <input type="text" id="private_key">
+            <button class="btn btn-next" id="savePrivateKey">Next &rarr;</button>
+            <button class="btn btn-cancel" id="cancelSettings">Cancel</button>
+        </div>
+
+        <div class="selectList-container" id="selectList-form">
+            <label for="private_key">Select List:</label>
+            <select id="select_list"></select>
+            <button class="btn btn-save" id="saveSelectedList">Save</button>
+            <button class="btn btn-cancel" id="backSettings">&larr; Back</button>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+    <div class="main-container" id="main">
+        <div class="fetch-container" id="fetch-container">
+            <button id="fetch">Grab recently played users</button>
+            <div class="warning text-center">This will only work if you are logged into steam.</div>
+        </div>
+        <ul class="links">
+            <li>
+                <a href="https://github.com/jung3o/addtovacstatus" class="github" target="_blank"></a>
+            </li>
+            <li>
+                <a href="#" class="settings" id="editSettings"></a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+    <div id="loading" class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+    <script src="/js/popup/helpers.js"></script>
+    <script src="/js/popup/settings.js"></script>
+</body>
+</html>

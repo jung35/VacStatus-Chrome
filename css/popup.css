@@ -1,0 +1,202 @@
+body {
+	width: 250px;
+	padding: 0 5px;
+	color: #424242;
+	background: #fff;
+}
+
+.clear{
+	clear: both;
+}
+
+.privateKey-container,
+.selectList-container,
+.main-container,
+.settings-container {
+	display: none;
+}
+
+h1 {
+	margin: 0 0 5px;
+	padding: 0 0 5px;
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+}
+
+h2 {
+	margin: 0 0 10px;
+}
+
+.fetch-container button {
+	background: #4CAF50;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+	cursor: pointer;
+	margin: 15px 0 0;
+}
+
+.fetch-container button:hover,
+.fetch-container button:hover {
+	background: #43A047;
+}
+
+.warning {
+	font-weight: bold;
+	color: #E57373;
+	font-size: 11px;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.settings-container label {
+	font-weight: bold;
+	padding: 3px 0;
+	display: inline-block;
+}
+
+.settings-container a {
+	float: right;
+	display: block;
+	margin: 3px 1px 0 0;
+	text-decoration: none;
+}
+
+.settings-container a:hover {
+	text-decoration: underline;
+}
+
+.settings-container input,
+.settings-container select {
+	padding: 7px 10px;
+	display: block;
+	width: calc(100% - 22px);
+	background: #FAFAFA;
+	color: #757575;
+	border: 1px solid #BDBDBD;
+	margin: 0 0 10px;
+}
+
+.settings-container select {
+	width: 100%;
+}
+
+.settings-container .warning {
+	float: right;
+	margin-top: 5px;
+}
+
+.settings-container .btn-save {
+	float: right;
+	margin-top: 5px;
+}
+
+.btn {
+	font-weight: bold;
+	padding: 5px 15px;
+	cursor: pointer;
+}
+
+.btn-next {
+	background: #3F51B5;
+	border: 1px solid #3949AB;
+	color: white;
+	float: right;
+}
+
+.btn-cancel {
+	background: #F44336;
+	border: 1px solid #D32F2F;
+	color: white;
+	display: none;
+}
+
+.btn-save {
+	background: #3F51B5;
+	border: 1px solid #303F9F;
+	color: white;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+
+  position: relative;
+  margin: 20px auto;
+  display: block;
+}
+
+.double-bounce1, .double-bounce2 {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background-color: #333;
+	opacity: 0.6;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	-webkit-animation: bounce 2.0s infinite ease-in-out;
+	animation: bounce 2.0s infinite ease-in-out;
+}
+
+.double-bounce2 {
+	-webkit-animation-delay: -1.0s;
+	animation-delay: -1.0s;
+}
+
+@-webkit-keyframes bounce {
+	0%, 100% { -webkit-transform: scale(0.0) }
+	50% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bounce {
+	0%, 100% { 
+		transform: scale(0.0);
+		-webkit-transform: scale(0.0);
+	} 50% { 
+		transform: scale(1.0);
+		-webkit-transform: scale(1.0);
+	}
+}
+
+ul.links {
+	margin: 15px 0 0;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+	border-top: 1px solid #eee;
+}
+
+
+ul.links li {
+	float: left;
+	width: 50%;
+	height: 60px;
+}
+
+ul.links li:first-child {
+	border-right: 1px solid #eee;
+	width: calc(50% - 1px);
+}
+
+ul.links li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+ul.links li a:hover {
+	background-color: #fafafa;
+}
+
+ul.links .github { background: url(/img/github.png) no-repeat center; }
+
+ul.links .settings { background: url(/img/cog.png) no-repeat center; }

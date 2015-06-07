@@ -1,22 +1,26 @@
 {
-
-
-  "name": "Add to VacStat.us",
+  "manifest_version" : 2,
+  "name": "VacStatus-Chrome",
   "description": "Add player to your VacStat.us list with one click!",
-  "version": "0.1.4",
-  "icons": { "16": "ow16.png",
-			"48": "ow48.png",
-			"128": "ow128.png" },
-  "permissions": [
-    "storage", "*://vacstat.us/*"
-  ],
-  "options_ui": {
-    "page": "setkey.html",
-    "chrome_style": true },
-  "content_scripts": [ {
-    "js": [ "addtovac.min.js" ],
-	"run_at": "document_end",
+  "version": "0.0.1",
+
+  "icons": { "16": "img/vs16.png", "48": "img/vs48.png", "128": "img/vs128.png" },
+
+  "permissions": [ "storage", "*://vacstat.us/*" ],
+
+  "content_scripts" : [{
+    "js": [ "js/addtovac.js" ],
+    "run_at": "document_end",
     "matches": [ "*://steamcommunity.com/id/*/friends/coplay/*" ]
   }],
-  "manifest_version": 2
+
+  "browser_action": {
+    "default_icon": {
+      "19": "img/vs19.png",
+      "38": "img/vs38.png"
+    },
+
+    "default_title": "VacStatus",
+    "default_popup": "popup.html"
+  }
 }
