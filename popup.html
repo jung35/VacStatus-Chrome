@@ -14,7 +14,7 @@
             <label for="private_key">Private Key:</label> <a href="https://vacstat.us/settings" target="_blank">(Grab key here)</a>
             <input type="text" id="private_key">
             <button class="btn btn-next" id="savePrivateKey">Next &rarr;</button>
-            <button class="btn btn-cancel" id="cancelSettings">Cancel</button>
+            <button class="btn btn-cancel btn-hide" id="cancelSettings">Cancel</button>
         </div>
 
         <div class="selectList-container" id="selectList-form">
@@ -31,9 +31,8 @@
             <button id="getCoplayMatches">Grab recently played users</button>
             <div class="warning text-center">This will only work if you are logged into steam.</div>
         </div>
-        <div class="matches-container" id="matches">
-            
-        </div>
+        <div class="matches-container" id="matches"></div>
+        <div class="players-container" id="players"></div>
     </div>
 
     <div id="loading" class="spinner">

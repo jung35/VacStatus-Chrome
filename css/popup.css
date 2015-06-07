@@ -107,7 +107,11 @@ h2 {
 	cursor: pointer;
 }
 
-.btn-next {
+.btn-hide {
+	display: none;
+}
+
+.btn-next, .btn-toggle-select {
 	background: #3F51B5;
 	border: 1px solid #3949AB;
 	color: white;
@@ -118,7 +122,6 @@ h2 {
 	background: #F44336;
 	border: 1px solid #D32F2F;
 	color: white;
-	display: none;
 }
 
 .btn-save {
@@ -182,7 +185,7 @@ ul.links {
 ul.links li:not(.clear) {
 	float: left;
 	width: 50%;
-	height: 60px;
+	height: 40px;
 }
 
 ul.links li:first-child {
@@ -205,12 +208,12 @@ ul.links .github { background: url(/img/github.png) no-repeat center; }
 ul.links .settings { background: url(/img/cog.png) no-repeat center; }
 
 .matches-container {
+	display: none;
 	margin: 15px -8px 0;
 	background: #fafafa;
 	border-top: 1px solid #ddd;
-	/*border-bottom: 1px solid #ddd;*/
 	padding: 15px;
-	max-height: 250px;
+	max-height: 300px;
 	overflow-y: auto;
 }
 
@@ -224,6 +227,17 @@ ul.links .settings { background: url(/img/cog.png) no-repeat center; }
 	margin-bottom: 5px;
 	cursor: pointer;
 	border: 1px solid #e1e1e1;
+}
+
+.match-item:hover {
+	background: #424242;
+	border: 1px solid #424242;
+	color: #fafafa;
+}
+
+.match-item:hover .player-count {
+	background: #fafafa;
+	color: #424242;
 }
 
 .match-item .title {
@@ -252,4 +266,81 @@ ul.links .settings { background: url(/img/cog.png) no-repeat center; }
 	border-radius: 20px;
 	font-weight: bold;
 	color: #eee;
+}
+
+.players-container {
+	display: none;
+	margin: -5px -8px 30px;
+	background: #fafafa;
+	padding: 15px;
+	max-height: 350px;
+	overflow-y: auto;
+	position: relative;
+}
+
+.btn-add-to-list {
+	background: #4CAF50;
+	border: 1px solid #388E3C;
+	color: white;
+	position: fixed;
+	bottom: 49px;
+	left: 0;
+	right: 0;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 30px;
+}
+
+.players-container h4 {
+	margin: 10px 0 0;
+	padding: 0;
+	text-align: center;
+	font-size: 17px;
+}
+
+.players-container .time {
+	text-align: center;
+	font-size: 13px;
+	margin: 0 0 15px;
+}
+
+.players-container input[type="checkbox"] {
+	display: none;
+}
+
+.players-container input[type="checkbox"]:checked + .player-item {
+	background: #03A9F4;
+	color: white;
+}
+
+.players-container .player-item {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background: #fff;
+	padding: 0 5px;
+	height: 40px;
+	margin: 0 5px 5px;
+	cursor: pointer;
+	border: 1px solid #e1e1e1;
+	width: calc(50% - 22px);
+	float: left;
+}
+
+.players-container .player-item:hover {
+	background: #eee;
+}
+
+.player-item .avatar {
+	width: 32px;
+	height: 32px;
+	margin-right: 10px;
+}
+
+.player-item .display-name {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
