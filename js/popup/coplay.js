@@ -1,4 +1,5 @@
 var matches = [];
+var pageIncrement = 0;
 
 function fetchCoplay(pageNumber)
 {
@@ -61,17 +62,17 @@ function fetchCoplay(pageNumber)
 				});
 			}
 
-			console.log(match);
-
 			matches.push(match)
 		}
 		
 		numberOfPages = page.getElementsByClassName('pagingPageLink').length + 1;
 
+		pageIncrement++;
+
 		if(typeof pageNumber != 'number')
 		{
 			for(var p = 2; p <= numberOfPages; p++) fetchCoplay(p);
-		} else if(pageNumber == numberOfPages) {
+		} else if(pageIncrement == numberOfPages) {
 			chrome.storage.local.set({ matches: matches }, function () {
 				fetchMatches();
 			});

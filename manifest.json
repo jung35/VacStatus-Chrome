@@ -2,7 +2,7 @@
   "manifest_version" : 2,
   "name": "VacStatus-Chrome",
   "description": "Quickly add players from your previously played games!",
-  "version": "0.0.2",
+  "version": "0.0.3",
 
   "icons": { "16": "img/vs16.png", "48": "img/vs48.png", "128": "img/vs128.png" },
 
