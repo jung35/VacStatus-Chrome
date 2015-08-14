@@ -47,7 +47,7 @@ function fetchCoplay(pageNumber)
 				players: []
 			};
 
-			friendHolder = coplayGroup.getElementsByClassName('friendHolder');
+			friendHolder = coplayGroup.getElementsByClassName('friendBlock');
 
 			for(var x = 0; x < friendHolder.length; x++)
 			{
@@ -56,9 +56,12 @@ function fetchCoplay(pageNumber)
 				match.players.push({
 					steam_id: "U:1:"+player.getAttribute('data-miniprofile'),
 					avatar: player.getElementsByTagName('img').item(0).getAttribute('src'),
-					display_name: player.getElementsByTagName('p').item(0).getElementsByTagName('a').item(0).innerText
+					display_name: player.getElementsByTagName('div').item(2).innerText.trim()
+							.replace('\t','').replace('\n','').replace(/(\n.+)+/, '').replace('<br />','')
 				});
 			}
+
+			console.log(match);
 
 			matches.push(match)
 		}
